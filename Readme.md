@@ -4,8 +4,6 @@
 
 ## Features
 * User should able to view all the tables.
-* Alter the table
-* update the table
 
 ### feature 1:display the menus table.
 ```sql
