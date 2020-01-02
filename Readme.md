@@ -7,19 +7,19 @@
 
 
 ### feature 1:display the menus table.
-```create query
+```sql
    create table menu(menu_id number,
    category varchar2(30) not null,
    constraint menu_id_pk primary key(menu_id),
    constraint category_cq check(category in('food','snakes & shakes','desserts')));
 ```
-```
-   insert query
-```
+
+
+```sql
    insert into menus(menu_id,category)values(1,'food');
    insert into menus(menu_id,category)values(2,'snakes and shakes');
    insert into menus(menu_id,category)values(3,'desserts');
-
+```
  Query:
   ```sql
     
@@ -28,7 +28,7 @@
      
 
 ### feature 2:display the foodstuff_items table.
-```create query
+```sql
     create table foodstuff_items(item_id number,
     item_name varchar2(50) not null,
     categories varchar2(60) not null,
@@ -38,9 +38,8 @@
     constraint categories_cq2 check(categories in('V','NV','O')),
     constraint price_cq2 check(price>=0));
 ```
-```
-   insert query
-```
+
+```sql
    insert into foodstuff_items(item_id,item_name,categories,price)values(11,'Chicken Briyani','NV',300);
    insert into foodstuff_items(item_id,item_name,categories,price)values(12,'MilkShake','O',150);
    insert into foodstuff_items(item_id,item_name,categories,price)values(13,'Veg Burger','V',50);
@@ -48,20 +47,17 @@
    insert into foodstuff_items(item_id,item_name,categories,price)values(15,'Biscuit','O',80);
    insert into foodstuff_items(item_id,item_name,categories,price)values(16,'Badam Halwa','O',200);
 ```
-```
-   query
-```
+
  
 | item_id | menu_id | item_name       | categories | price |
 |---------|---------|-----------------|------------|-------|
 | 11      | 1       | Chicken Briyani | NV         | 300   |
 | 12      | 2       | MilkShake       | O          | 150   |
 | 13      | 3       | Laddu           | O          | 100   |
-```
+
 ### feature 3: display the users table.
-```
-    create query
-```
+
+```sql
      create table users(user_id number,
      user_name varchar2(50) not null,
      phone_no number(10) not null,
@@ -71,8 +67,8 @@
      constraint phone_no_ck check(length(to_char(phone_no))=10));
      create sequence user_id start with 21 increment by 1;
 ```
-   insert query
-```
+   
+```sql
 insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nextval,'Aarthi',9735647570,'no.29,north            street,mambakam','Chennai');
 
 insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nextval,'Sanaya',9834554345,'no.34,kamarajar colony,town','Tirunelveli');
@@ -83,8 +79,7 @@ insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nex
 
 insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nextval,'Rithya',9846767390,'no.6,west mambalam,avadi','chennai');
 ```
-   query
-```
+ 
 | user_id | user_name | phone_no   | address                     | city        |
 |---------|-----------|------------|-----------------------------|-------------|
 | 21      | aarthi    | 9735647570 | no.29,north street,mambakam | Chennai     |
@@ -105,7 +100,7 @@ insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nex
    constraint user_id_fk1 foreign key(user_id) references users(user_id));
    
  ```
-  insert query
+  
  ```sql
 insert into ordering(order_id,user_id)values(31,21);
 insert into ordering(order_id,user_id)values(32,22);
@@ -113,7 +108,7 @@ insert into ordering(order_id,user_id)values(33,23);
 insert into ordering(order_id,user_id)values(34,24);
 insert into ordering(order_id,user_id)values(35,25);
 ```
-query
+
 ```sql
   select * from ordering;
 ```
@@ -139,8 +134,8 @@ query
     constraint new_uq unique(order_id,item_id),
     constraint total_amounts_ck1 check(total_amounts>0));
  ```
-   insert query
- ```
+   
+ ```sql
    insert into order_item(order_item_id,order_id,item_id,quantity,total_amounts)values(41,31,11,4,1200);
    insert into order_item(order_item_id,order_id,item_id,quantity,total_amounts)values(42,32,12,3,450);
    insert into order_item(order_item_id,order_id,item_id,quantity,total_amounts)values(43,33,13,5,250);
@@ -149,10 +144,9 @@ query
    insert into order_item(order_item_id,order_id,item_id,quantity,total_amounts)values(46,31,12,4,800);
    insert into order_item(order_item_id,order_id,item_id,quantity,total_amounts)values(47,31,16,3,800);
 ```
-  query
-```
-  sql
-```
+
+ 
+```sql
    select * from order_item;
 ```
 | order_item_id | order_id | item_id | quantity | total_amounts | status  | order_date                     |
