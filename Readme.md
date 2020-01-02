@@ -100,7 +100,7 @@ select * from users;
 ```sql
    create table ordering(order_id number,
    user_id number not null ,
-   ordered_date timestamp default systimestamp,
+   ordered_date timestamp ,
    delivered_date timestamp,
    tot_amt number,
    sta_tus varchar2(50) default 'ordered',
@@ -135,7 +135,7 @@ insert into ordering(order_id,user_id)values(35,25);
     quantity number not null,
     total_amounts number not null,
     status varchar2(50) default 'ordered',
-    order_date timestamp default systimestamp,
+    order_date timestamp,
     constraint order_item_id_pk primary key(order_item_id),
     constraint order_id_fk1 foreign key(order_id)references ordering(order_id),
     constraint item_id_fk2 foreign key(item_id)references foodstuff_items(item_id),
@@ -165,8 +165,7 @@ insert into ordering(order_id,user_id)values(35,25);
 | 43            | 33       | 13      | 5        | 250           | ordered | 02-01-20 10:19:47.313000000 PM |
  
  ### feature 2:Add the menu_id in foodstuff_items table.
- ```
-    sql
+ ```sql
       alter table foodstuff_items add(menu_id number,constraint menu_id_fk2 foreign key(menu_id)references menus(menu_id));
  ```
  
@@ -177,8 +176,7 @@ insert into ordering(order_id,user_id)values(35,25);
 | 13      |  NULL   | Laddu           | O          | 100   |
 
 ### feature 3:update the menu_id in foodstuff_items table.
-```
-   sql
+``` sql
      update foodstuff_items set menu_id=1 where item_id=11;
 ```
    
@@ -189,8 +187,7 @@ insert into ordering(order_id,user_id)values(35,25);
 | 13      |  NULL   | Laddu           | O          | 100   |
 
 ### feature 4:display the user_name,quantity,price and tot_amt for the user_id=22.
-```
-    sql
+``` sql
     select u.user_name,f.price,i.quantity,(f.price*i.quantity) as total_amounts from foodstuff_items f,users u,ordering o,order_item i       where u.user_id=o.user_id and f.item_id=i.item_id and o.order_id=i.order_id and u.user_id=22;
 ```
 
@@ -199,8 +196,7 @@ insert into ordering(order_id,user_id)values(35,25);
 | sanaya    |  150    |      3          | 450          | 
 
 ### feature 5:display the total_amount of the user for the order_id=32.
-```
-   sql
+```sql
    create or replace FUNCTION TOT_AMT 
     (
       I_ORDER_ID IN NUMBER 
@@ -234,8 +230,7 @@ insert into ordering(order_id,user_id)values(35,25);
 
 
    ### feature 6:update the status,comments and delivered_date for the order_id=32.
- ```
-    sql
+ ```sql
     update ordering set sta_tus='delivered',comments='successfully delivered',delivered_date=systimestamp where order_id=33;
 ```
 | order_id | user_id |       ordered_date             |        delivered_date          | tot_amt | sta_tus   |       comments        |
@@ -244,8 +239,7 @@ insert into ordering(order_id,user_id)values(35,25);
 | 32       | 22      | 02-01-20 10:18:56.469000000 PM |        NULL                    |   NULL  | ordered   |       NULL            |
 | 33       | 23      | 02-01-20 10:18:56.469000000 PM |03-01-20 03:03:07.406000000 AM  |   250   | delivered |successfully delivered |      
 ### feature 7:update the status whose cancelled the order for the order_id=32.
-```
-   sql
+```sql
  create or replace PROCEDURE PROCEDURE1 
 (
   i_order_id IN NUMBER 
@@ -270,8 +264,7 @@ declare
 | 32       | 22      | 02-01-20 10:18:56.469000000 PM |        NULL                    |   NULL  | cancelled |       NULL            |
 | 33       | 23      | 02-01-20 10:18:56.469000000 PM |03-01-20 03:03:07.406000000 AM  |   250   | delivered |successfully delivered | 
 
-```
-   sql
+```sql
    select * from order_item;
 ```
 | order_item_id | order_id | item_id | quantity | total_amounts |   status  | order_date                     |
