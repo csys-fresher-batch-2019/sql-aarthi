@@ -20,7 +20,7 @@
    insert into menus(menu_id,category)values(2,'snakes and shakes');
    insert into menus(menu_id,category)values(3,'desserts');
 ```
- Query:
+
   ```sql
     
     select * from menus;
@@ -46,6 +46,8 @@
    insert into foodstuff_items(item_id,item_name,categories,price)values(14,'Laddu','O',100);
    insert into foodstuff_items(item_id,item_name,categories,price)values(15,'Biscuit','O',80);
    insert into foodstuff_items(item_id,item_name,categories,price)values(16,'Badam Halwa','O',200);
+   
+   select * from foodstuff_items;
 ```
 
  
@@ -78,6 +80,8 @@ insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nex
 insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nextval,'Meenakshi',9756477451,'no.2,renugambal nagar,puthukottai','Tuticorin');
 
 insert into users(user_id,user_name,phone_no,address,city)values(user_id_seq.nextval,'Rithya',9846767390,'no.6,west mambalam,avadi','chennai');
+
+select * from users;
 ```
  
 | user_id | user_name | phone_no   | address                     | city        |
