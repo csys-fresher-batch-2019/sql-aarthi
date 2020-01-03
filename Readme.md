@@ -5,32 +5,7 @@
 ## Features
 * User should able to view all the tables.
 
-### feature 1:display the menus table.
-```sql
-   create table menu(menu_id number,
-   category varchar2(30) not null,
-   constraint menu_id_pk primary key(menu_id),
-   constraint category_cq check(category in('food','snakes & shakes','desserts')));
-```
-
-
-```sql
-   insert into menus(menu_id,category)values(1,'food');
-   insert into menus(menu_id,category)values(2,'snakes and shakes');
-   insert into menus(menu_id,category)values(3,'desserts');
-```
-
-  ```sql
-    
-    select * from menus;
-  ```
-| menu_id | category          |
-|---------|-------------------|
-| 1       | food              |
-| 2       | snakes and shakes |
-| 3       | desserts          |
-
-### display the foodstuff_items table.
+### feature 1:display the foodstuff_items table.
 ```sql
     create table foodstuff_items(item_id number,
     item_name varchar2(50) not null,
@@ -40,7 +15,8 @@
     constraint item_name_uq2 unique(item_name),
     constraint categories_cq2 check(categories in('V','NV','O')),
     constraint price_cq2 check(price>=0));
-```
+ ```
+
 
 ```sql
    insert into foodstuff_items(item_id,item_name,categories,price)values(11,'Chicken Briyani','NV',300);
@@ -49,16 +25,42 @@
    insert into foodstuff_items(item_id,item_name,categories,price)values(14,'Laddu','O',100);
    insert into foodstuff_items(item_id,item_name,categories,price)values(15,'Biscuit','O',80);
    insert into foodstuff_items(item_id,item_name,categories,price)values(16,'Badam Halwa','O',200);
-   
-   select * from foodstuff_items;
-```
+ ```
 
- 
+  ```sql
+    select * from foodstuff_items;
+  ```
+  
+   
 | item_id | menu_id | item_name       | categories | price |
 |---------|---------|-----------------|------------|-------|
 | 11      | 1       | Chicken Briyani | NV         | 300   |
 | 12      | 2       | MilkShake       | O          | 150   |
 | 13      | 3       | Laddu           | O          | 100   |
+
+### display the menus table.
+```sql
+   create table menus(menu_id number,
+   category varchar2(30) not null,
+   constraint menu_id_pk primary key(menu_id),
+   constraint category_cq check(category in('food','snakes & shakes','desserts')));
+```
+
+```sql
+   insert into menus(menu_id,category)values(1,'food');
+   insert into menus(menu_id,category)values(2,'snakes and shakes');
+   insert into menus(menu_id,category)values(3,'desserts');
+```
+```sql
+   select * from menus;
+   
+```
+| menu_id | category          |
+|---------|-------------------|
+| 1       | food              |
+| 2       | snakes and shakes |
+| 3       | desserts          |
+
 
 ### display the users table.
 
