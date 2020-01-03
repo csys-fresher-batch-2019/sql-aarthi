@@ -1,9 +1,11 @@
-# My swiggy
+# My swiggy hotel
 
 *http://swiggy.com
 
 ## Features
 * User should able to view all the tables.
+* calculate the total amount of the particular user.
+* update the status those who are order/cancel the order. 
 
 ### feature 1:display the foodstuff_items table.
 ```sql
